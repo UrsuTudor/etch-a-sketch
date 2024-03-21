@@ -2,6 +2,7 @@ body {
     display: flex;
     justify-content: center;
 }
+
 .squares{
     border: black 2px solid;
     width: 50px;
@@ -11,10 +12,10 @@ body {
 .container {
     display: flex;
     flex-wrap: wrap;
+    width: 870px;
+    height: 820px;
     min-width: 870px;
-    min-height: 870px;
-    max-width: 870px;
-    max-height: 870px;
+    min-height: 820px;
     align-items: center;
     justify-content: center;
 }
