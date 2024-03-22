@@ -31,32 +31,32 @@ gridRows.forEach((row) => {
 });
 
 
-let newGridBtn = document.querySelector('.resetBtn');
+const newGridBtn = document.querySelector('.resetBtn');
 
 function removeOldGrid() {
     gridColumns.forEach((column) => {
         gridContainer.removeChild(column);
     });
-}
+};
 
 function createCustomColumns() {
-    for (i = 1; i <= numberOfSquares; i++) {
-        const gridColumns = document.createElement('div');
-        gridColumns.classList.add('gridColumns' );
-        gridColumns.setAttribute('id', i);
-        gridContainer.appendChild(gridColumns);
-    };
-}
+    for(i = 1; i <= numberOfSquares; i++) {
+    const gridColumns = document.createElement('div');
+    gridColumns.classList.add('gridColumns' );
+    gridColumns.setAttribute('id', i);
+    gridContainer.appendChild(gridColumns);
+};
+};
 
 function createCustomRows() {
     gridColumns = document.querySelectorAll('.gridColumns');
     gridColumns.forEach((column) => {
-        for(i = 1; i <= numberOfSquares; i++) {
-            const gridRows = document.createElement('div');
-            gridRows.classList.add('gridRows');
-            column.appendChild(gridRows);
-        };
-    });
+    for(i = 1; i <= numberOfSquares; i++) {
+        const gridRows = document.createElement('div');
+        gridRows.classList.add('gridRows');
+        column.appendChild(gridRows);
+    };
+});
 };
 
 function enableColoring() {
@@ -73,8 +73,12 @@ let numberOfSquares = '';
 
 newGridBtn.addEventListener('click', () => {
     numberOfSquares = prompt ('How many pixels would you like your canvas to have on each side?');
-    removeOldGrid();
-    createCustomColumns();
-    createCustomRows();
-    enableColoring();
+    if (numberOfSquares < 0 || numberOfSquares > 100) {
+        alert ('Please choose a number between 0 and 100');
+    } else {
+        removeOldGrid();
+        createCustomColumns();
+        createCustomRows();
+        enableColoring();
+    };
 });
