@@ -1,21 +1,23 @@
-body {
+.mainContainer {
     display: flex;
-    justify-content: center;
-}
-
-.squares{
-    border: black 2px solid;
-    width: 50px;
-    height: 50px;
-}
-
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 870px;
-    height: 820px;
-    min-width: 870px;
-    min-height: 820px;
     align-items: center;
-    justify-content: center;
+    flex-direction: column;
+}
+
+.gridContainer {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 700px;
+    background-color: lightblue;
+}
+
+.gridColumns{
+    display: flex;
+    flex: 1;
+}
+
+.gridRows {
+    border: black 1px solid;
+    flex: 1;
 }
