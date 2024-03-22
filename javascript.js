@@ -73,7 +73,7 @@ let numberOfSquares = '';
 
 newGridBtn.addEventListener('click', () => {
     numberOfSquares = prompt ('How many pixels would you like your canvas to have on each side?');
-    if (numberOfSquares < 0 || numberOfSquares > 100) {
+    if (numberOfSquares < 0 || numberOfSquares > 100 ) {
         alert ('Please choose a number between 0 and 100');
     } else {
         removeOldGrid();

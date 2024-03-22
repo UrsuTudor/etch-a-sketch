@@ -1,7 +1,12 @@
+body {
+    background-color: lightgrey;
+}
+
 .mainContainer {
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 5px;
 }
 
 .gridContainer {
@@ -9,7 +14,8 @@
     flex-direction: column;
     width: 700px;
     height: 700px;
-    background-color: lightblue;
+    background-color: white;
+    border: black 5px solid;
 }
 
 .gridColumns{
