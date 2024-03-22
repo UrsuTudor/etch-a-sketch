@@ -1,45 +1,80 @@
-const gridContainer = document.querySelector('.gridContainer')
+const gridContainer = document.querySelector('.gridContainer');
+
+//creates initial canvas of 16x16
+
 
 for (i = 1; i <= 16; i++) {
     const gridColumns = document.createElement('div');
     gridColumns.classList.add('gridColumns' );
     gridColumns.setAttribute('id', i);
     gridContainer.appendChild(gridColumns);
-}
+};
 
-const gridColumns = document.querySelectorAll('.gridColumns');
-console.log(gridColumns)
+
+let gridColumns = document.querySelectorAll('.gridColumns');
+
 gridColumns.forEach((column) => {
     for(i = 1; i <= 16; i++) {
         const gridRows = document.createElement('div');
         gridRows.classList.add('gridRows');
-        column.appendChild(gridRows)
-    }
-})
+        column.appendChild(gridRows);
+    };
+});
 
-let squares = document.querySelectorAll('.squares')
+//enables coloring of squares on hover
+let gridRows = document.querySelectorAll('.gridRows');
 
-squares.forEach((square) => {
-    square.addEventListener('mouseenter', ()  => {
-        square.style.backgroundColor = 'yellow'
-    })
-})
+gridRows.forEach((row) => {
+    row.addEventListener('mouseenter', ()  => {
+        row.style.backgroundColor = 'yellow';
+    });
+});
 
-let newGridBtn = document.querySelector('.resetBtn')
 
+let newGridBtn = document.querySelector('.resetBtn');
+
+function removeOldGrid() {
+    gridColumns.forEach((column) => {
+        gridContainer.removeChild(column);
+    });
+}
+
+function createCustomColumns() {
+    for (i = 1; i <= numberOfSquares; i++) {
+        const gridColumns = document.createElement('div');
+        gridColumns.classList.add('gridColumns' );
+        gridColumns.setAttribute('id', i);
+        gridContainer.appendChild(gridColumns);
+    };
+}
+
+function createCustomRows() {
+    gridColumns = document.querySelectorAll('.gridColumns');
+    gridColumns.forEach((column) => {
+        for(i = 1; i <= numberOfSquares; i++) {
+            const gridRows = document.createElement('div');
+            gridRows.classList.add('gridRows');
+            column.appendChild(gridRows);
+        };
+    });
+};
+
+function enableColoring() {
+    gridRows = document.querySelectorAll('.gridRows');
+
+    gridRows.forEach((row) => {
+        row.addEventListener('mouseenter', ()  => {
+            row.style.backgroundColor = 'yellow';
+        });
+    });
+};
+
+let numberOfSquares = '';
 
 newGridBtn.addEventListener('click', () => {
-    squares.forEach((square) => {
-        gridContainer.removeChild(square);
-    });
-    squares = document.querySelectorAll('.squares')
-
-    let numberOfSquares = prompt('How many pixels would you like your canvas to have on each side?')
-
-    for (i = 1; i <= numberOfSquares; i++) {
-        const div = document.createElement('div');
-        div.classList.add('squares');
-        gridContainer.appendChild(div);
-    };
-    
-})
+    numberOfSquares = prompt ('How many pixels would you like your canvas to have on each side?');
+    removeOldGrid();
+    createCustomColumns();
+    createCustomRows();
+    enableColoring();
+});
