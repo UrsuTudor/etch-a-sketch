@@ -81,6 +81,8 @@ newGridBtn.addEventListener('click', () => {
     };
 });
 
+//functionality for a button that makes the colors displayed on hover be random
+
 const randomColorBtn = document.querySelector('#randomColorBtn')
 
 function randomRGBValue() {
@@ -97,3 +99,21 @@ randomColorBtn.addEventListener('click', () => {
         });
     });
 });
+
+//functionality for a button that makes the opacityValue of the color increase by increments of 10% until it gets to 100%
+
+const opacityValueBtn = document.querySelector('#opacityBtn')
+
+let opacityValue = 0
+
+opacityValueBtn.addEventListener('click', () => {
+    gridRows.forEach((row) => {
+        row.addEventListener('mouseenter', () => {
+            row.style.opacity = opacityValue
+            opacityValue = opacityValue + 0.1
+            if (opacityValue > 0.9) {
+                opacityValue = 0
+            }
+        })
+    })
+})
