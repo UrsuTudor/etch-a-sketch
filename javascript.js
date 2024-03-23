@@ -1,8 +1,6 @@
 const gridContainer = document.querySelector('.gridContainer');
 
 //creates initial canvas of 16x16
-
-
 for (i = 1; i <= 16; i++) {
     const gridColumns = document.createElement('div');
     gridColumns.classList.add('gridColumns' );
@@ -31,7 +29,7 @@ gridRows.forEach((row) => {
 });
 
 
-const newGridBtn = document.querySelector('.resetBtn');
+const newGridBtn = document.querySelector('#resetBtn');
 
 function removeOldGrid() {
     gridColumns.forEach((column) => {
@@ -81,4 +79,16 @@ newGridBtn.addEventListener('click', () => {
         createCustomRows();
         enableColoring();
     };
+});
+
+const multicolorBtn = document.querySelector('#multicolorBtn')
+
+multicolorBtn.addEventListener('click', () => {
+    gridRows = document.querySelectorAll('.gridRows');
+
+    gridRows.forEach((row) => {
+        row.addEventListener('mouseenter', ()  => {
+            row.style.backgroundColor = 'rgb(100,50,54)';
+        });
+    });
 });
