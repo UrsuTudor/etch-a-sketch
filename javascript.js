@@ -81,14 +81,19 @@ newGridBtn.addEventListener('click', () => {
     };
 });
 
-const multicolorBtn = document.querySelector('#multicolorBtn')
+const randomColorBtn = document.querySelector('#randomColorBtn')
 
-multicolorBtn.addEventListener('click', () => {
-    gridRows = document.querySelectorAll('.gridRows');
+function randomRGBValue() {
+    return (Math.floor(Math.random() * 255))
+}
 
+randomColorBtn.addEventListener('click', () => {
     gridRows.forEach((row) => {
         row.addEventListener('mouseenter', ()  => {
-            row.style.backgroundColor = 'rgb(100,50,54)';
+            const RGBValue1 = randomRGBValue()
+            const RGBValue2 = randomRGBValue()
+            const RGBValue3 = randomRGBValue()
+            row.style.backgroundColor = 'rgb' + '(' + RGBValue1 + ',' + RGBValue2 + ',' + RGBValue3 + ')';
         });
     });
 });
