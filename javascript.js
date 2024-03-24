@@ -70,6 +70,7 @@ function enableColoring() {
 let numberOfSquares = '';
 
 newGridBtn.addEventListener('click', () => {
+    opacityBtn.disabled = false
     numberOfSquares = prompt ('How many pixels would you like your canvas to have on each side?');
     if (numberOfSquares < 0 || numberOfSquares > 100 ) {
         alert ('Please choose a number between 0 and 100');
@@ -102,18 +103,24 @@ randomColorBtn.addEventListener('click', () => {
 
 //functionality for a button that makes the opacityValue of the color increase by increments of 10% until it gets to 100%
 
-const opacityValueBtn = document.querySelector('#opacityBtn')
+const btnContainer = document.getElementById('btnContainer');
+const opacityBtn = document.createElement('button');
+opacityBtn.textContent = 'Toggle opacity';
+btnContainer.appendChild(opacityBtn);
 
-let opacityValue = 0
 
-opacityValueBtn.addEventListener('click', () => {
+let opacityValue = 0;
+
+
+opacityBtn.addEventListener('click', () => {
+    opacityBtn.disabled = true;
     gridRows.forEach((row) => {
         row.addEventListener('mouseenter', () => {
-            row.style.opacity = opacityValue
-            opacityValue = opacityValue + 0.1
+            row.style.opacity = opacityValue;
+            opacityValue = opacityValue + 0.1;
             if (opacityValue > 0.9) {
-                opacityValue = 0
-            }
-        })
-    })
-})
+                opacityValue = 0;
+            };
+        });
+    });
+});
