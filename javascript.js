@@ -24,7 +24,7 @@ let gridRows = document.querySelectorAll('.gridRows');
 
 gridRows.forEach((row) => {
     row.addEventListener('mouseenter', ()  => {
-        row.style.backgroundColor = 'yellow';
+        row.style.backgroundColor = 'black';
     });
 });
 
@@ -62,7 +62,7 @@ function enableColoring() {
 
     gridRows.forEach((row) => {
         row.addEventListener('mouseenter', ()  => {
-            row.style.backgroundColor = 'yellow';
+            row.style.backgroundColor = 'black';
         });
     });
 };
@@ -109,18 +109,37 @@ opacityBtn.textContent = 'Toggle opacity';
 btnContainer.appendChild(opacityBtn);
 
 
-let opacityValue = 0;
+let opacityValue = 0.1;
 
+opacityBtn.addEventListener('click', function opacityToggle() {
+    enableRowOpacity();
+});
 
-opacityBtn.addEventListener('click', () => {
-    opacityBtn.disabled = true;
+    //opacityBtn.disabled = true;
+
+let clicks = 0
+
+function enableRowOpacity() {
+    clicks++;
+    console.log(clicks)
+    let enableOpacity //might not be needed;
     gridRows.forEach((row) => {
-        row.addEventListener('mouseenter', () => {
+        row.addEventListener('mouseenter', enableOpacity = function enableOpacity() {
             row.style.opacity = opacityValue;
             opacityValue = opacityValue + 0.1;
-            if (opacityValue > 0.9) {
-                opacityValue = 0;
+            opacityValue = Math.round(opacityValue * 10) /10;
+            if (opacityValue == 1.1) {
+                opacityValue = 0.1;
             };
+            
+            console.log(opacityValue);
         });
-    });
-});
+
+    if (clicks > 1) {
+        row.removeEventListener('mouseenter', enableOpacity);
+        console.log('removing');
+        row.addEventListener ('mouseenter', () => {
+            row.style.opacity = 1;
+        })
+    }
+})}
