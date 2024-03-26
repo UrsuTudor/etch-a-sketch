@@ -108,38 +108,33 @@ const opacityBtn = document.createElement('button');
 opacityBtn.textContent = 'Toggle opacity';
 btnContainer.appendChild(opacityBtn);
 
-
+opacityBtn.addEventListener('click', function opacityToggle() {
+    toggleProgressiveOpacity();
+});
+      
 let opacityValue = 0.1;
 
-opacityBtn.addEventListener('click', function opacityToggle() {
-    enableRowOpacity();
-});
+let clicks  = 0;
 
-    //opacityBtn.disabled = true;
+function toggleProgressiveOpacity() {
 
-let clicks = 0
-
-function enableRowOpacity() {
     clicks++;
-    console.log(clicks)
-    let enableOpacity //might not be needed;
+    let enableOpacity; 
+
     gridRows.forEach((row) => {
-        row.addEventListener('mouseenter', enableOpacity = function enableOpacity() {
-            row.style.opacity = opacityValue;
-            opacityValue = opacityValue + 0.1;
-            opacityValue = Math.round(opacityValue * 10) /10;
-            if (opacityValue == 1.1) {
-                opacityValue = 0.1;
-            };
-            
-            console.log(opacityValue);
-        });
+    row.addEventListener('mouseenter', enableOpacity = function enableOpacity () {
+        row.style.opacity = opacityValue;
+        opacityValue = opacityValue + 0.1;
+        opacityValue = Math.round(opacityValue * 10) /10;
+
+        //resets opacity after the 10th mouseenter event
+        if (opacityValue == 1.1) {
+            opacityValue = 0.1;
+        };
+    });  
 
     if (clicks > 1) {
         row.removeEventListener('mouseenter', enableOpacity);
-        console.log('removing');
-        row.addEventListener ('mouseenter', () => {
-            row.style.opacity = 1;
-        })
-    }
-})}
+    };
+});
+};

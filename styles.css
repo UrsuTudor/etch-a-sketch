@@ -24,6 +24,6 @@ body {
 }
 
 .gridRows {
-    border: black 1px solid;
+    
     flex: 1;
 }
